@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jeya Priya A — Medical Writer & Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f2ec;
+    --cream: #ede9e0;
+    --accent: #2d5a3d;
+    --accent-light: #4a7c5f;
+    --rule: #c8c0b0;
+    --muted: #7a7468;
+    --gold: #b8962e;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.7; font-size: 16px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(245,242,236,0.96); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .banner {
+    margin-top: 3.3rem; background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.85rem 3rem;
+  }
+  .banner p { font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.06em; color: #c8c0b0; }
+  .banner a { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,0.35); padding: 0.42rem 1rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .banner a:hover { background: rgba(255,255,255,0.1); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 92vh; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5.5rem 4rem 5.5rem 3rem; border-right: 1px solid var(--rule); }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 4.8rem); font-weight: 300; line-height: 1.05; margin-bottom: 0.35rem; }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+  .hero-bio { font-size: 0.91rem; line-height: 1.88; color: #4a4740; max-width: 46ch; margin-bottom: 2.2rem; }
+  .hero-bio strong { color: var(--accent); font-weight: 500; }
+  .contact-row { display: flex; flex-direction: column; gap: 0.48rem; margin-bottom: 2rem; }
+  .contact-row a { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; }
+  .contact-row a:hover { color: var(--accent); }
+  .btn { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent); color: #fff; font-family: 'DM Mono', monospace; font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.82rem 1.5rem; text-decoration: none; transition: background 0.2s, transform 0.15s; width: fit-content; }
+  .btn:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+  .hero-right { display: flex; flex-direction: column; justify-content: center; padding: 5.5rem 3rem 5.5rem 4rem; }
+  .stat-row { padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
+  .stat-row:first-child { border-top: 1px solid var(--rule); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.2rem; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.61rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .uk-badge { margin-top: 2rem; padding: 1.1rem 1.2rem; background: var(--cream); border-left: 3px solid var(--gold); display: flex; align-items: flex-start; gap: 0.75rem; }
+  .uk-badge-text { font-family: 'DM Mono', monospace; font-size: 0.64rem; color: var(--muted); line-height: 1.75; }
+  .uk-badge-text strong { display: block; font-size: 0.68rem; color: var(--ink); margin-bottom: 0.18rem; }
+
+  section { padding: 5.5rem 3rem; border-top: 1px solid var(--rule); }
+  .sec-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3.2rem; }
+  .sec-num { font-family: 'DM Mono', monospace; font-size: 0.61rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+  .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; }
+
+  .spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .spec-cell { background: var(--paper); padding: 1.2rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.67rem; letter-spacing: 0.05em; color: var(--ink); transition: background 0.2s, color 0.2s; position: relative; cursor: default; }
+  .spec-cell:hover { background: var(--accent); color: #fff; }
+  .spec-cell.uk { color: var(--accent); }
+  .spec-cell.uk::after { content: '🇬🇧'; position: absolute; top: 0.4rem; right: 0.5rem; font-size: 0.62rem; }
+  .spec-cell.uk:hover { color: #fff; }
+
+  .samples-tabs { display: flex; border-bottom: 1px solid var(--rule); }
+  .tab-btn { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 1.5rem; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); cursor: pointer; transition: color 0.2s, border-color 0.2s; margin-bottom: -1px; }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-btn:hover { color: var(--accent); }
+  .tab-panel { display: none; border: 1px solid var(--rule); border-top: none; }
+  .tab-panel.active { display: block; }
+
+  .sample-header { padding: 1.8rem 2.2rem 1.4rem; border-bottom: 1px solid var(--rule); background: var(--cream); display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+  .sample-type { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem; }
+  .sample-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.28rem; }
+  .sample-mentor { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.05em; }
+  .sample-tags { display: flex; flex-wrap: wrap; gap: 0.38rem; margin-top: 0.7rem; align-self: flex-end; }
+  .stag { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.55rem; border: 1px solid var(--rule); color: var(--muted); }
+  .stag.uk { border-color: var(--gold); color: var(--gold); }
+
+  .sample-body { padding: 2.2rem; max-height: 500px; overflow-y: auto; line-height: 1.88; font-size: 0.88rem; color: #3a3830; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+  .sample-body::-webkit-scrollbar { width: 5px; }
+  .sample-body::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+  .sample-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; margin: 1.7rem 0 0.55rem; color: var(--ink); }
+  .sample-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; margin: 1.1rem 0 0.38rem; color: var(--ink); }
+  .sample-body p { margin-bottom: 0.85rem; }
+  .sample-body ul, .sample-body ol { padding-left: 1.3rem; margin-bottom: 0.85rem; }
+  .sample-body li { margin-bottom: 0.28rem; }
+  .sample-body strong { font-weight: 500; color: var(--ink); }
+  .sample-body table { width: 100%; border-collapse: collapse; margin: 1.1rem 0; font-size: 0.83rem; }
+  .sample-body th { background: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.55rem 0.75rem; border: 1px solid var(--rule); text-align: left; }
+  .sample-body td { padding: 0.5rem 0.75rem; border: 1px solid var(--rule); vertical-align: top; }
+  .abstract-box { background: var(--cream); border-left: 3px solid var(--accent); padding: 1.1rem 1.3rem; margin: 0.8rem 0 1.3rem; font-size: 0.86rem; }
+  .kw { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); margin-top: 0.55rem; }
+
+  .sample-footer { padding: 0.9rem 2.2rem; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; background: var(--paper); }
+  .sample-footer span { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.05em; }
+  .sample-footer a { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+
+  .works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .work-card { background: var(--paper); padding: 2rem 1.8rem; display: flex; flex-direction: column; transition: background 0.2s; }
+  .work-card:hover { background: var(--cream); }
+  .work-tag { font-family: 'DM Mono', monospace; font-size: 0.59rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+  .work-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.65rem; }
+  .work-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.75; flex: 1; margin-bottom: 0.9rem; }
+  .work-mentor { font-family: 'DM Mono', monospace; font-size: 0.59rem; color: var(--rule); letter-spacing: 0.06em; border-top: 1px solid var(--rule); padding-top: 0.65rem; margin-top: auto; }
+  .work-card:hover .work-mentor { color: var(--muted); border-color: var(--muted); }
+
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2.2rem; padding: 2.4rem 0; border-bottom: 1px solid var(--rule); }
+  .exp-item:first-child { border-top: 1px solid var(--rule); }
+  .exp-date { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--muted); letter-spacing: 0.05em; line-height: 1.65; padding-top: 0.1rem; }
+  .exp-loc { display: block; margin-top: 0.38rem; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ccc; }
+  .exp-role { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.18rem; }
+  .exp-co { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.85rem; }
+  .exp-body { font-size: 0.87rem; color: #4a4740; line-height: 1.8; }
+  .exp-body ul { padding-left: 1.2rem; margin-top: 0.45rem; }
+  .exp-body li { margin-bottom: 0.25rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.38rem; margin-top: 0.85rem; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.58rem; border: 1px solid var(--rule); color: var(--muted); }
+  .tag.uk { border-color: var(--gold); color: var(--gold); }
+
+  .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .cred-card { background: var(--paper); padding: 2rem 1.8rem; }
+  .cred-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 0.28rem; }
+  .cred-org { font-family: 'DM Mono', monospace; font-size: 0.64rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 1rem; }
+  .cred-mods { display: flex; flex-wrap: wrap; gap: 0.38rem; }
+  .cred-mod { font-family: 'DM Mono', monospace; font-size: 0.59rem; letter-spacing: 0.04em; padding: 0.26rem 0.62rem; background: var(--cream); color: var(--ink); }
+  .cred-mod.hi { background: var(--accent); color: #fff; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .panel-card { background: var(--paper); padding: 2rem 1.8rem; }
+  .panel-head { font-family: 'DM Mono', monospace; font-size: 0.61rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+  .award-item, .ws-item { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.9rem; font-size: 0.86rem; color: #4a4740; line-height: 1.6; }
+  .award-item::before { content: '✦'; color: var(--gold); flex-shrink: 0; font-size: 0.7rem; margin-top: 0.2rem; }
+  .ws-item::before { content: '◆'; color: var(--accent); flex-shrink: 0; font-size: 0.58rem; margin-top: 0.3rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .skill-cell { background: var(--paper); padding: 1.1rem 1rem; font-size: 0.83rem; color: #4a4740; display: flex; align-items: flex-start; gap: 0.55rem; }
+  .skill-cell::before { content: '—'; color: var(--rule); font-family: 'DM Mono', monospace; font-size: 0.7rem; flex-shrink: 0; margin-top: 0.18rem; }
+
+  .uk-panel { background: var(--cream); border: 1px solid var(--rule); padding: 2.6rem; margin-top: 3rem; }
+  .uk-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 300; margin-bottom: 0.38rem; }
+  .uk-panel-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.6rem; }
+  .uk-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 2rem; list-style: none; }
+  .uk-list li { font-size: 0.86rem; color: #4a4740; display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.55; }
+  .uk-list li::before { content: '✓'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
+  footer { padding: 3rem; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; font-style: italic; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--rule); }
+
+  @media (max-width: 860px) {
+    nav { padding: 0.9rem 1.2rem; } .nav-links { gap: 0.8rem; } .nav-links a { font-size: 0.58rem; }
+    .banner { padding: 0.8rem 1.2rem; flex-direction: column; text-align: center; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 4.5rem 1.4rem 2.8rem; }
+    .hero-right { padding: 2.8rem 1.4rem; }
+    .works-grid, .cred-grid, .two-col { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    section { padding: 4rem 1.4rem; }
+    .uk-list { grid-template-columns: 1fr; }
+    .samples-tabs { flex-wrap: wrap; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#">Jeya Priya A</a>
+  <ul class="nav-links">
+    <li><a href="#samples">Samples</a></li>
+    <li><a href="#writing">Works</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#uk">UK Fit</a></li>
+  </ul>
+</nav>
+
+<div class="banner">
+  <p>✦ Writing samples embedded below — drug monographs, product brochure &amp; clinical industry blog</p>
+  <a href="mailto:mini15111998@gmail.com?subject=Writing%20Samples%20Request">Request Full Documents →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Medical Writer &amp; Editor · Open to Remote UK Roles</p>
+    <h1 class="hero-name">Jeya<br><em>Priya A</em></h1>
+    <p class="hero-sub">B.Tech Biotechnology · Certified Medical Writer</p>
+    <p class="hero-bio">
+      Detail-oriented Medical Content Professional with experience in scientific editing, clinical documentation, and data verification. Proficient in reviewing patient clinical records, ensuring data accuracy, and maintaining compliance with ICH-GCP guidelines.
+      <strong>Familiar with MHRA, EMA, and ABPI regulatory frameworks.</strong>
+      Based in Bengaluru — open to remote opportunities globally, including UK pharma, CRO, and medcomms agencies.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:mini15111998@gmail.com">✉&nbsp; mini15111998@gmail.com</a>
+      <a href="tel:+917598456473">✆&nbsp; +91 7598 456 473</a>
+      <a href="#">◎&nbsp; Bengaluru, Karnataka, India — Preferably Remote</a>
+    </div>
+    <a class="btn" href="mailto:mini15111998@gmail.com?subject=Opportunity%20Enquiry">Get In Touch →</a>
+  </div>
+  <div class="hero-right">
+    <div class="stat-row"><div class="stat-num">5+</div><div class="stat-label">Published-Format Projects</div></div>
+    <div class="stat-row"><div class="stat-num">3+</div><div class="stat-label">Years Editorial Experience</div></div>
+    <div class="stat-row"><div class="stat-num">ICH</div><div class="stat-label">GCP E6 R2 Certified — Internationally Recognised</div></div>
+    <div class="stat-row"><div class="stat-num">QC</div><div class="stat-label">Fact-Checking &amp; QA Review</div></div>
+    <div class="uk-badge">
+      <span style="font-size:1.3rem;line-height:1;padding-top:0.05rem;">🇬🇧</span>
+      <div class="uk-badge-text">
+        <strong>Open to UK Remote Opportunities</strong>
+        Familiar with MHRA guidance, EMA regulatory standards, and ABPI Code of Practice. Available for immediate engagement.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIALISMS -->
+<section id="specialisms">
+  <div class="sec-header"><span class="sec-num">00 —</span><h2 class="sec-title">Core Specialisms</h2></div>
+  <div class="spec-grid">
+    <div class="spec-cell">Scientific Editing</div>
+    <div class="spec-cell">Drug Monographs</div>
+    <div class="spec-cell">Fact-Checking &amp; QA</div>
+    <div class="spec-cell uk">MLR / ABPI Compliance</div>
+    <div class="spec-cell">Literature Search</div>
+    <div class="spec-cell">Reference Management</div>
+    <div class="spec-cell">Case Reports</div>
+    <div class="spec-cell">Narrative Reviews</div>
+    <div class="spec-cell">Medico-Marketing</div>
+    <div class="spec-cell">PubMed · Zotero</div>
+    <div class="spec-cell uk">EMA / MHRA Awareness</div>
+    <div class="spec-cell uk">CTD / eCTD Format</div>
+    <div class="spec-cell">Disease Monographs</div>
+    <div class="spec-cell">In-Silico Writing</div>
+    <div class="spec-cell">Patient Education</div>
+    <div class="spec-cell">Publication Ethics</div>
+    <div class="spec-cell">Pharmacovigilance</div>
+    <div class="spec-cell">AI in Medical Writing</div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section id="samples">
+  <div class="sec-header"><span class="sec-num">01 —</span><h2 class="sec-title">Writing Samples</h2></div>
+  <div class="samples-tabs">
+    <button class="tab-btn active" onclick="showTab('t1',this)">Drug Monograph</button>
+    <button class="tab-btn" onclick="showTab('t2',this)">Product Brochure</button>
+    <button class="tab-btn" onclick="showTab('t3',this)">Industry Blog</button>
+  </div>
+
+  <!-- TAB 1: Drug Monograph -->
+  <div id="t1" class="tab-panel active">
+    <div class="sample-header">
+      <div>
+        <div class="sample-type">Drug Monograph · Regulatory Format</div>
+        <div class="sample-title">Curcumin — A Natural Anti-Inflammatory Agent</div>
+        <div class="sample-mentor">Supervisor: Dr. Sabana Nazar &nbsp;·&nbsp; CareerInPharma, Bangalore</div>
+      </div>
+      <div class="sample-tags">
+        <span class="stag">FDA / CDSCO Format</span><span class="stag">Pharmacology</span>
+        <span class="stag">Primary Literature</span><span class="stag uk">EMA-Compatible</span>
+      </div>
+    </div>
+    <div class="sample-body">
+      <h2>1. Abstract</h2>
+      <div class="abstract-box">
+        <p>Curcumin is a yellow pigment, the primary polyphenolic bioactive substance of <em>Curcuma longa L.</em> (turmeric) in the South Asian diet and traditional medicine practices. It has various pharmacological activities including anti-inflammatory, antioxidant, antimicrobial, and anticancer effects which operate through modulation of NF-κB, Nrf2 and many kinases. Despite promising efficacy, clinical translation is impeded by low aqueous solubility, poor oral bioavailability (&lt;1%), and the need for frequent dosing due to rapid systemic clearance. This monograph reports Curcumin's pharmacology including evidence-based indications, safety information, and its current regulatory status to facilitate rational use for therapeutic purposes and future research.</p>
+        <p class="kw"><strong>Keywords:</strong> Curcumin, Curcuma longa, Anti-inflammatory, Antioxidant, Bioavailability, Dietary Supplement, Clinical Trials</p>
+      </div>
+      <h2>2. Introduction</h2>
+      <p>Curcumin (Diferuloylmethane) is a primary active ingredient sourced from turmeric in South Asia; it belongs to the diarylheptanoid class of curcuminoids, constituting approximately 2–8% of the dry weight of turmeric. Turmeric has been utilised as a therapeutic modality through Ayurveda and Traditional Chinese Medicine for approximately 4,000 years, with inflammatory conditions, digestive disorders, and hepatic ailments as common historical indications.</p>
+      <p>In modern pharmacology, curcumin exhibits broad-spectrum biological activity targeting transcription factors, cytokines, enzymes, and signalling kinases. Clinical efficacy is limited by poor aqueous solubility, instability at physiological pH, and extensive first-pass metabolism, resulting in very low plasma concentrations after oral administration.</p>
+      <h2>3. Chemical Profile</h2>
+      <p>Molecular formula C₂₁H₂₀O₆ (MW = 368.38 g/mol). Keto-enol tautomerism gives curcumin unique chemical properties; the enol form is thermodynamically more stable due to intramolecular hydrogen bonding. Practically insoluble in water at acidic or neutral pH; soluble in ethanol and dimethylsulfoxide. Curcuminoids present: <strong>Curcumin</strong> (~77%), <strong>Demethoxycurcumin</strong> (~17%), <strong>Bisdemethoxycurcumin</strong> (~3%).</p>
+      <h2>4. Pharmacology</h2>
+      <h3>4.1 Mechanisms of Action</h3>
+      <p>Pleiotropic effects via: NF-κB inhibition (reducing pro-inflammatory cytokines); Nrf2/HO-1 activation (antioxidant response); COX-2 and LOX inhibition (prostaglandin/leukotriene synthesis); modulation of JAK/STAT, PI3K/AKT, and MAPK pathways relevant to cell proliferation and apoptosis.</p>
+      <h3>4.2 Pharmacokinetics</h3>
+      <table>
+        <thead><tr><th>Parameter</th><th>Value / Finding</th></tr></thead>
+        <tbody>
+          <tr><td>Oral bioavailability</td><td>&lt;1% (standard formulation)</td></tr>
+          <tr><td>Peak plasma concentration</td><td>Very low; rapid first-pass metabolism</td></tr>
+          <tr><td>Distribution</td><td>Widespread; crosses blood-brain barrier</td></tr>
+          <tr><td>Metabolism</td><td>Glucuronidation, sulphation, reduction</td></tr>
+          <tr><td>Enhancement with piperine</td><td>~20-fold increase in bioavailability</td></tr>
+          <tr><td>Half-life</td><td>Short; necessitates frequent dosing</td></tr>
+        </tbody>
+      </table>
+      <h3>4.3 Evidence-Based Indications</h3>
+      <p>Clinical evidence supports use in osteoarthritis (statistically significant pain and functional score improvements at 500 mg curcuminoids TDS), inflammatory bowel disease, and metabolic syndrome. Study heterogeneity and bioavailability limitations complicate cross-study comparisons; further large-scale RCTs with standardised formulations are warranted.</p>
+    </div>
+    <div class="sample-footer">
+      <span>Excerpt — full monograph available on request</span>
+      <a href="mailto:mini15111998@gmail.com?subject=Full%20Drug%20Monograph%20Request">Request Full Document</a>
+    </div>
+  </div>
+
+  <!-- TAB 2: Brochure -->
+  <div id="t2" class="tab-panel">
+    <div class="sample-header">
+      <div>
+        <div class="sample-type">Product Monograph · Medico-Marketing Format</div>
+        <div class="sample-title">Curcumin — Standardized Curcuminoid Extract</div>
+        <div class="sample-mentor">Supervisor: Dr. Sabana Nazar &nbsp;·&nbsp; CareerInPharma, Bangalore</div>
+      </div>
+      <div class="sample-tags">
+        <span class="stag">HCP Reference</span><span class="stag">FDA / CDSCO</span>
+        <span class="stag">Dietary Supplement</span><span class="stag uk">ABPI-Style Disclosure</span>
+      </div>
+    </div>
+    <div class="sample-body">
+      <p style="font-size:0.74rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:0.04em;margin-bottom:1rem;text-transform:uppercase;">For Professional and Healthcare Provider Reference Only</p>
+      <div class="abstract-box" style="border-color:var(--gold);">
+        <p><strong>Regulatory Classification Notice:</strong> Curcumin is classified as a dietary supplement under 21 CFR Part 111 (USA) and as a food supplement under applicable regulations. This monograph is prepared for informational and HCP reference purposes only. It does not constitute approved drug labelling. The statements herein have not been evaluated by the FDA or CDSCO/DCGI. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </div>
+      <h2>1. Product Overview</h2>
+      <table>
+        <thead><tr><th>Parameter</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td>Generic Name</td><td>Curcumin (Curcuma longa Extract)</td></tr>
+          <tr><td>Chemical Name</td><td>1,7-Bis(4-hydroxy-3-methoxyphenyl)-1,6-heptadiene-3,5-dione</td></tr>
+          <tr><td>Molecular Formula</td><td>C₂₁H₂₀O₆</td></tr>
+          <tr><td>Molecular Weight</td><td>368.38 g/mol</td></tr>
+          <tr><td>CAS Number</td><td>458-37-7</td></tr>
+          <tr><td>Category</td><td>Dietary Supplement — Anti-inflammatory &amp; Antioxidant Support</td></tr>
+          <tr><td>Source</td><td>Rhizomes of Curcuma longa (Turmeric)</td></tr>
+          <tr><td>Standard Used</td><td>95% Curcuminoids by HPLC</td></tr>
+        </tbody>
+      </table>
+      <h2>2. Description</h2>
+      <p>Curcumin is the principal bioactive polyphenolic compound extracted from the rhizomes of <em>Curcuma longa</em>. It constitutes approximately 2–5% by weight of dried turmeric. Due to its hydrophobic nature, curcumin exhibits poor aqueous solubility and undergoes rapid first-pass metabolism, resulting in low oral bioavailability. Co-administration with piperine (5–20 mg) produces approximately a 20-fold increase in bioavailability through inhibition of intestinal glucuronidation. Formulations incorporating phospholipid complexes, nanoparticle delivery systems, or SEDDS have also demonstrated improved systemic absorption.</p>
+      <h2>3. Dosage Forms</h2>
+      <p>Available as <strong>Capsules</strong> (hard gelatin / vegetarian, most common), <strong>Tablets</strong> (film-coated for taste masking), and <strong>Oral Powder Sachets</strong> (for reconstitution). Typical commercial strengths: 250 mg to 1,000 mg curcuminoids per unit.</p>
+      <h2>4. Safety Profile</h2>
+      <p>Generally well tolerated at therapeutic doses. Most frequently reported adverse effects are gastrointestinal (nausea, diarrhoea), typically at high doses. May potentiate anticoagulant effects — caution with warfarin and other anticoagulants. Use with caution in pregnancy and lactation (limited safety data). Contraindicated in known hypersensitivity to turmeric or related Zingiberaceae species.</p>
+    </div>
+    <div class="sample-footer">
+      <span>Excerpt — full brochure available on request</span>
+      <a href="mailto:mini15111998@gmail.com?subject=Full%20Brochure%20Request">Request Full Document</a>
+    </div>
+  </div>
+
+  <!-- TAB 3: Blog -->
+  <div id="t3" class="tab-panel">
+    <div class="sample-header">
+      <div>
+        <div class="sample-type">Industry Blog · Digital Content</div>
+        <div class="sample-title">eTMF 101: Evolution of Clinical Trial Documentation</div>
+        <div class="sample-mentor">Independent writing · CareerInPharma, Bangalore</div>
+      </div>
+      <div class="sample-tags">
+        <span class="stag">Clinical Operations</span><span class="stag">Regulatory History</span>
+        <span class="stag uk">EMA / ICH GCP</span><span class="stag uk">MHRA-Relevant</span>
+      </div>
+    </div>
+    <div class="sample-body">
+      <div class="abstract-box">
+        <p><strong>Overview:</strong> This article examines the evolution of clinical trial documentation from paper-based Trial Master Files (TMFs) to electronic Trial Master Files (eTMFs), covering historical drivers, regulatory milestones including EMA and MHRA frameworks, operational impacts, and emerging trends.</p>
+      </div>
+      <h2>Introduction</h2>
+      <p>The transition from paper-based TMFs to eTMF systems has fundamentally altered how clinical trial records are created, maintained, and reviewed. Processes that were once manual, fragmented, and error-prone are now centralised within validated digital environments that support structured oversight and cross-functional collaboration.</p>
+      <h2>Regulatory History</h2>
+      <p>In 1996, ICH formally defined the Trial Master File in the ICH E6 GCP guideline. A landmark regulatory milestone came in 1997 with FDA 21 CFR Part 11, establishing criteria for electronic records and electronic signatures. In the EU — including via MHRA alignment with EMA guidance — harmonised regulatory acceptance of eTMF systems emerged in the early 2010s. Post-Brexit, the MHRA has maintained broadly equivalent standards, continuing to accept validated eTMF systems meeting EU Annex 11 and ICH E6 R2 requirements.</p>
+      <h2>Challenges of Paper-Based TMFs</h2>
+      <ul>
+        <li><strong>Missing documentation:</strong> Increased risk of findings during MHRA/EMA inspections.</li>
+        <li><strong>Manual data entry:</strong> Higher likelihood of transcription and filing errors.</li>
+        <li><strong>Limited visibility:</strong> Delayed access for geographically distributed teams.</li>
+        <li><strong>High operational costs:</strong> Physical storage, duplication, archiving and transportation overheads.</li>
+        <li><strong>Version control failures:</strong> Inconsistent documentation risk across multi-site studies.</li>
+      </ul>
+      <h2>What is an eTMF?</h2>
+      <p>An electronic Trial Master File (eTMF) is a validated digital content management system designed to store, organise, and manage clinical trial documentation in accordance with regulatory requirements. Modern eTMF platforms integrate with CTMS, EDC, and other eClinical technologies — enabling real-time document tracking, automated completeness metrics, and remote inspection capabilities valued by MHRA and EMA inspectors.</p>
+      <h2>Emerging Trends</h2>
+      <p>The eTMF landscape is evolving with AI-driven document classification, risk-based quality management, and decentralised trial support becoming standard features. Regulatory bodies including the MHRA are increasing digital inspection strategies, reinforcing the strategic importance of robust eTMF governance in modern clinical development.</p>
+    </div>
+    <div class="sample-footer">
+      <span>Excerpt — full article available on request</span>
+      <a href="mailto:mini15111998@gmail.com?subject=Full%20Blog%20Article%20Request">Request Full Document</a>
+    </div>
+  </div>
+</section>
+
+<!-- ALL WORKS -->
+<section id="writing">
+  <div class="sec-header"><span class="sec-num">02 —</span><h2 class="sec-title">All Works</h2></div>
+  <div class="works-grid">
+    <div class="work-card">
+      <div class="work-tag">Drug Monograph · Regulatory Format</div>
+      <div class="work-title">Curcumin — A Natural Anti-Inflammatory Agent</div>
+      <div class="work-desc">Full pharmaceutical-format monograph covering pharmacology, pharmacokinetics, drug interactions, adverse reactions, toxicology, and patient counselling. Structured to FDA/CDSCO labelling standards with cited primary literature.</div>
+      <div class="work-mentor">Mentor: Dr. Sabana Nazar</div>
+    </div>
+    <div class="work-card">
+      <div class="work-tag">Disease Monograph · Clinical Reference</div>
+      <div class="work-title">Continuous Glucose Monitoring (CGM) Systems</div>
+      <div class="work-desc">Clinical reference monograph covering CGM device mechanisms, evidence-based indications, clinical outcomes, patient selection criteria, and emerging developments in diabetes management technology.</div>
+      <div class="work-mentor">Mentor: Dr. Sabana Nazar</div>
+    </div>
+    <div class="work-card">
+      <div class="work-tag">Narrative Review · Review Article</div>
+      <div class="work-title">Biomaterials in Regenerative Medicine: Bridging Biology and Engineering</div>
+      <div class="work-desc">Comprehensive narrative review examining scaffold design, biocompatibility considerations, and translational applications in tissue engineering — integrating materials science and regenerative biology literature.</div>
+      <div class="work-mentor">Mentor: Dr. Arpita Roy</div>
+    </div>
+    <div class="work-card">
+      <div class="work-tag">Case Report · Clinical Documentation</div>
+      <div class="work-title">Squamous Cell Carcinoma — Atypical Presentation in a Young Male</div>
+      <div class="work-desc">Structured clinical case report documenting atypical moderately differentiated SCC with clinical history, diagnostic workup, histopathological findings, and management discussion.</div>
+      <div class="work-mentor">Mentor: Dr. Arpita Roy</div>
+    </div>
+    <div class="work-card">
+      <div class="work-tag">In-Silico · Computational Medical Writing</div>
+      <div class="work-title">Common Targets for Early Diagnosis of Breast Cancer via Network Pharmacology</div>
+      <div class="work-desc">Computational pharmacology write-up applying network pharmacology methodology to identify shared molecular targets for breast cancer diagnosis and therapy, integrating bioinformatics data with structured scientific narrative.</div>
+      <div class="work-mentor">Mentor: Dr. Arpita Roy</div>
+    </div>
+    <div class="work-card">
+      <div class="work-tag">Industry Blog · Digital Content</div>
+      <div class="work-title">eTMF 101: Evolution of Clinical Trial Documentation</div>
+      <div class="work-desc">Structured industry blog tracing the regulatory and operational evolution from paper TMFs to eTMF systems — covering MHRA/EMA milestones, platform capabilities, market analysis, and AI-driven emerging trends.</div>
+      <div class="work-mentor">Independent — CareerInPharma</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header"><span class="sec-num">03 —</span><h2 class="sec-title">Professional History</h2></div>
+  <div>
+    <div class="exp-item">
+      <div class="exp-date">January 2025 — Present<span class="exp-loc">Remote</span></div>
+      <div>
+        <div class="exp-role">Content Editor &amp; Fact Checker</div>
+        <div class="exp-co">Klarecon</div>
+        <div class="exp-body">
+          <ul>
+            <li>Edit and fact-check medical and scientific content for accuracy, clarity, and regulatory compliance.</li>
+            <li>Verify data consistency across multiple sources following referencing and style guidelines.</li>
+            <li>Evaluate scientific literature and validate information aligned with research protocols and industry standards.</li>
+            <li>Convert complex scientific data into structured, reader-friendly documentation for professional audiences.</li>
+            <li>Maintain quality control and documentation integrity across all editorial deliverables.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">QC / QA</span><span class="tag">Fact-Checking</span>
+          <span class="tag">Citation Integrity</span><span class="tag uk">ABPI Principles</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">November 2024 — January 2025<span class="exp-loc">Bangalore, India</span></div>
+      <div>
+        <div class="exp-role">Medical Writing &amp; Research Projects</div>
+        <div class="exp-co">CareerInPharma</div>
+        <div class="exp-body">Completed a supervised portfolio of pharmaceutical and clinical writing projects under certified faculty mentors — spanning drug monographs, disease monographs, case reports, narrative reviews, and in-silico medical writing to ICH GCP E6 R2 standards.</div>
+        <div class="tags">
+          <span class="tag">Drug Monographs</span><span class="tag">Case Reports</span>
+          <span class="tag">Narrative Reviews</span><span class="tag uk">ICH GCP E6 R2</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">February 2021 — June 2021<span class="exp-loc">Remote</span></div>
+      <div>
+        <div class="exp-role">Copy Editor</div>
+        <div class="exp-co">TNQ Technologies</div>
+        <div class="exp-body">
+          <ul>
+            <li>Reviewed scientific manuscripts for accuracy, logical flow, and compliance with journal and regulatory requirements.</li>
+            <li>Verified citations, cross-referenced references, and ensured metadata consistency.</li>
+            <li>Collaborated with editorial and production teams to maintain data integrity and meet strict timelines.</li>
+            <li>Supported quality assurance processes for scientific and medical publications.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Manuscript Editing</span><span class="tag">Journal Compliance</span>
+          <span class="tag">Citation Verification</span><span class="tag">QA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="sec-header"><span class="sec-num">04 —</span><h2 class="sec-title">Education &amp; Credentials</h2></div>
+  <div class="cred-grid">
+    <div class="cred-card">
+      <div class="cred-title">Certification in Medical Writing</div>
+      <div class="cred-org">CareerInPharma, Bangalore · 2025</div>
+      <div class="cred-mods">
+        <span class="cred-mod hi">ICH GCP E6 R2</span>
+        <span class="cred-mod hi">Drug Regulatory Affairs</span>
+        <span class="cred-mod hi">Pharmacovigilance</span>
+        <span class="cred-mod hi">Publication Ethics</span>
+        <span class="cred-mod">Original Research Article Writing</span>
+        <span class="cred-mod">Case Report &amp; Series Writing</span>
+        <span class="cred-mod">Review Article Writing</span>
+        <span class="cred-mod">Search Strategy &amp; Writing Standards</span>
+        <span class="cred-mod">Reference Styles &amp; Citation</span>
+        <span class="cred-mod">Monograph Writing</span>
+        <span class="cred-mod">Patient Leaflet Development</span>
+        <span class="cred-mod">Prescription Information Writing</span>
+        <span class="cred-mod">Medico-Marketing Copy</span>
+        <span class="cred-mod">Blog &amp; White Paper Writing</span>
+        <span class="cred-mod">Abstract Writing</span>
+        <span class="cred-mod">Book Chapter Writing</span>
+        <span class="cred-mod">AI in Medical Writing</span>
+        <span class="cred-mod">Justification Claims Writing</span>
+      </div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-title">B.Tech — Biotechnology</div>
+      <div class="cred-org">Kamaraj College of Engineering and Technology · 2016 – 2020</div>
+      <div class="cred-mods">
+        <span class="cred-mod hi">Molecular Biology</span>
+        <span class="cred-mod hi">Pharmacology</span>
+        <span class="cred-mod">Biochemistry</span>
+        <span class="cred-mod">Bioinformatics</span>
+        <span class="cred-mod">Research Methodology</span>
+        <span class="cred-mod">Scientific Communication</span>
+        <span class="cred-mod">Cell Biology</span>
+        <span class="cred-mod">Biomedical Technology</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS & WORKSHOPS -->
+<section id="awards">
+  <div class="sec-header"><span class="sec-num">05 —</span><h2 class="sec-title">Honours &amp; Workshops</h2></div>
+  <div class="two-col">
+    <div class="panel-card">
+      <div class="panel-head">Honours &amp; Awards</div>
+      <div class="award-item">Second Prize — Project Expo Competition</div>
+      <div class="award-item">Second Prize — Best Application, Technical Contest on Synthetic Biology</div>
+      <div class="award-item">Consolation Prize — Poster Presentation, "Current Trends in Advanced Biomedical Technology"</div>
+      <div class="award-item">Participant — Guinness World Record Attempt: "The Largest Recycling Lesson"</div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-head">Workshops &amp; Conferences</div>
+      <div class="ws-item">National Workshop: Computer Aided Drug Discovery — Athmic Biotech, Kerala</div>
+      <div class="ws-item">ICMR-Sponsored Workshop: Empowering Oncology Research Using Deep Learning — PSG College of Technology</div>
+      <div class="ws-item">National &amp; International Conferences on Biotechnology, Biomedical Science, Green Chemistry, and Sustainable Development</div>
+      <div class="ws-item">Collaborative research discussions and knowledge-sharing sessions across multiple institutions</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header"><span class="sec-num">06 —</span><h2 class="sec-title">Skills &amp; Tools</h2></div>
+  <div class="skills-grid">
+    <div class="skill-cell">Medical &amp; Scientific Writing</div>
+    <div class="skill-cell">Literature Search — PubMed, Google Scholar</div>
+    <div class="skill-cell">Zotero · Mendeley · EndNote</div>
+    <div class="skill-cell">Medical Marketing Content</div>
+    <div class="skill-cell">Patient Education Materials</div>
+    <div class="skill-cell">Microsoft Office Suite</div>
+    <div class="skill-cell">Clinical Documentation &amp; Data Management</div>
+    <div class="skill-cell">Attention to Detail &amp; Ethical Reporting</div>
+    <div class="skill-cell">Critical Thinking &amp; Problem Solving</div>
+    <div class="skill-cell">Strong Written Communication</div>
+    <div class="skill-cell">English · Tamil · Hindi</div>
+    <div class="skill-cell">Adaptability &amp; Cross-functional Collaboration</div>
+  </div>
+
+  <!-- UK READINESS -->
+  <div class="uk-panel" id="uk">
+    <div class="uk-panel-title">🇬🇧 &nbsp;UK Market Readiness</div>
+    <div class="uk-panel-sub">Why this portfolio translates directly to UK pharma, CRO &amp; medcomms roles</div>
+    <ul class="uk-list">
+      <li>ICH GCP E6 R2 certified — recognised by MHRA and all major UK sponsors and CROs</li>
+      <li>Familiar with EMA regulatory framework, submission standards, and CTD/eCTD format</li>
+      <li>ABPI Code of Practice awareness for UK medico-marketing and promotional content</li>
+      <li>eTMF regulatory knowledge including MHRA inspection readiness requirements</li>
+      <li>Drug monograph experience structured to international labelling standards</li>
+      <li>Publication ethics training covering ICMJE and COPE guidelines used by UK journals</li>
+      <li>Pharmacovigilance awareness aligned with EMA PVMS requirements</li>
+      <li>Remote-first model — available to UK agencies with zero relocation barrier</li>
+      <li>Strong English written fluency with academic and regulatory vocabulary</li>
+      <li>Experience across clinical, regulatory, educational, and promotional content types</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Jeya Priya A</span>
+  <ul class="footer-links">
+    <li><a href="mailto:mini15111998@gmail.com">mini15111998@gmail.com</a></li>
+    <li><a href="tel:+917598456473">+91 7598 456 473</a></li>
+    <li><a href="mailto:mini15111998@gmail.com?subject=Writing%20Samples%20Request">Request Samples</a></li>
+  </ul>
+  <span class="footer-copy">Medical Writer · Editor · Bengaluru, India</span>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
